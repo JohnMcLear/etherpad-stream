@@ -72,4 +72,4 @@ stdin.input.on('data', function (chunk) {
 	checkPadExists(padID, text);
 });
 
-console.log("---\nStreaming to http://" + etherpad.options.host + "/p/" + padID + "\n---\n");
+console.log("---\nStreaming to http://" + etherpad.options.host + ((etherpad.options.port == 80)? "" : ":" + etherpad.options.port) + "/p/" + padID + "\n---\n");
