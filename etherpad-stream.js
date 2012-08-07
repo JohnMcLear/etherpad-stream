@@ -4,9 +4,9 @@
 	Modify these
 */
 
-var host = 'etherpad.example.com';
-var port = 80;
-var apiKey = '123';
+var host = 'localhost';
+var port = 9001;
+var apiKey = '7VBbHHvZUnWBE7rPKjsxSTMcdbEBV1vE';
 
 /*
 	No need to touch anything below here
@@ -68,7 +68,11 @@ stdin.input.on('data', function (chunk) {
 	}
 	var text = chunk.toString();
 
-	process.stdout.write(text);	
+	if (text == '\r' || text == '\n'){
+		console.log('');
+	} else {
+		process.stdout.write(text);	
+	}
 	checkPadExists(padID, text);
 });
 
