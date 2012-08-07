@@ -23,13 +23,13 @@ echo "Hello World" | node etherpad-stream.js mypad
 ```
 
 ```bash
-ping google.co.uk | ./etherpad-stream.js testpad
+ping google.co.uk | node etherpad-stream.js testpad
 ```
 
 ### No pad name
 
 ```bash
-ping google.co.uk | ./etherpad-stream.js
+ping google.co.uk | node etherpad-stream.js
 ```
 
 If you do not pass a pad name to etherpad-stream.js, your computer's hostname 
