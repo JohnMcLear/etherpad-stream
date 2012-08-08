@@ -34,7 +34,7 @@ ping google.co.uk | etherpad-stream testpad
 ping google.co.uk | etherpad-stream
 ```
 
-If you do not pass a pad name to etherpad-stream.js, your computer's hostname 
+If you do not pass a pad name to etherpad-stream, your computer's hostname 
 will be used as the pad name instead.
 
 ## Installation
