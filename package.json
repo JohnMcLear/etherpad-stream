@@ -2,6 +2,9 @@
 	"name" : "etherpad-stream",
 	"version" : "0.0.1",
 	"author" : "Simon Maddox <simon@simonmaddox.com>",
+	"bin": {
+		"etherpad-stream": "./etherpad-stream.js"
+	},
 	"dependencies" : [
 		"etherpad-lite-client"
 	]
