@@ -1,17 +1,5 @@
 #!/usr/local/bin/node
 
-/*
-	Modify these
-*/
-
-var host = 'localhost';
-var port = 9001;
-var apiKey = '7VBbHHvZUnWBE7rPKjsxSTMcdbEBV1vE';
-
-/*
-	No need to touch anything below here
-*/
-
 var api = require('etherpad-lite-client');
 
 if (process.stdin.isTTY){
@@ -26,11 +14,20 @@ if (!padID){
 	padID = require("os").hostname();
 }
 
-var etherpad = api.connect({
-	apikey: apiKey,
-	host: host,
-	port: port
+var etherpad;
+
+var fs = require('fs');
+fs.readFile(getUserHome() + '/.etherpad-stream', function(err,data){
+	if (err) {
+		console.error("Unable to read Etherpad settings. Have you put them in ~/.etherpad-stream ?");
+		process.exit(1);
+	} else {
+		var settings = JSON.parse(data);
+		etherpad = api.connect(settings);
+		console.log("---\nStreaming to http://" + etherpad.options.host + ((etherpad.options.port == 80)? "" : ":" + etherpad.options.port) + "/p/" + padID + "\n---\n");
+	}
 });
+
 
 var updatePad = function(pad, body){
 	etherpad.getText({padID : pad}, function(error, data){
@@ -76,4 +73,7 @@ stdin.input.on('data', function (chunk) {
 	checkPadExists(padID, text);
 });
 
-console.log("---\nStreaming to http://" + etherpad.options.host + ((etherpad.options.port == 80)? "" : ":" + etherpad.options.port) + "/p/" + padID + "\n---\n");
+// From: http://stackoverflow.com/a/9081436
+function getUserHome() {
+  return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+}
