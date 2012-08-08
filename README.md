@@ -1,5 +1,7 @@
 # Etherpad-Stream
 
+[Video](http://www.youtube.com/watch?v=PScJLoNMdX4&)
+
 I wanted something that could take output from STDOUT and send it straight to
 Etherpad. This is my implementation.
 
@@ -59,5 +61,7 @@ And you should be good to go.
 
 ## To Do
 
-I can't figure out how to detect a backspace in TTY mode, so you can't delete
+- I can't figure out how to detect a backspace in TTY mode, so you can't delete
 text. You'll have to use your browser for now.
+
+- Find a nicer way of putting this in your path
