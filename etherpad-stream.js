@@ -70,7 +70,9 @@ stdin.input.on('data', function (chunk) {
 	} else {
 		process.stdout.write(text);	
 	}
-	checkPadExists(padID, text);
+	if (etherpad != null){
+		checkPadExists(padID, text);
+	}
 });
 
 // From: http://stackoverflow.com/a/9081436
